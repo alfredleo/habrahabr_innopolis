@@ -28,7 +28,7 @@ def test_habrahabr(local=False):
         dummy_status, response = http.request(URL_PARSE)
     soup = bs4.BeautifulSoup(response)
 
-    statistics =dict()
+    statistics = dict()
     for user_comment in soup.find_all('div', class_="comment_body"):
         username = user_comment.find_next('a', class_='username').get_text()
         message = user_comment.find_next('div', class_='message').get_text()
