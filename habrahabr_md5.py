@@ -28,7 +28,7 @@ def test_habrahabr(local=False):
         dummy_status, response = http.request(URL_PARSE)
     soup = bs4.BeautifulSoup(response)
 
-    statistics = dict()
+    statistics =dict()
     for user_comment in soup.find_all('div', class_="comment_body"):
         username = user_comment.find_next('a', class_='username').get_text()
         message = user_comment.find_next('div', class_='message').get_text()
@@ -55,9 +55,14 @@ def print_it(statistics):
     print "{} correct answers, {} wrong ones".format(correct, wrong)
 
 
-print_it(test_habrahabr())
+def main():
+    """ Main routine to support modularity
+    """
+    print_it(test_habrahabr())
+
 
 if __name__ == "__main__":
     import doctest
 
     doctest.testmod(verbose=True)
+    main()
